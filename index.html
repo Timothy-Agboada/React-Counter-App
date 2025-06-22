@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 13: React Counter App</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        const App = () => {
+            const [count, setCount] = React.useState(0);
+
+            const increment = () => {
+                setCount(currentCount => currentCount + 1);
+            };
+
+            const decrement = () => {
+                setCount(currentCount => currentCount - 1);
+            };
+
+            const reset = () => {
+                setCount(0);
+            };
+            
+            return (
+                <div className="bg-white rounded-2xl shadow-2xl p-20 text-center w-full max-w-md">
+                    <h1 className="text-2xl font-bold text-gray-500 mb-2">React Counter</h1>
+                    <p className="text-8xl font-bold text-gray-800 mb-8">{count}</p>
+                    <div className="flex justify-center gap-4">
+                        <button 
+                            onClick={decrement}
+                            className="bg-red-500 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-red-600 transition-all duration-200 text-2xl"
+                        >
+                            -
+                        </button>
+                        <button 
+                            onClick={reset}
+                            className="bg-gray-500 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-gray-600 transition-all duration-200"
+                        >
+                            Reset
+                        </button>
+                        <button 
+                            onClick={increment}
+                            className="bg-green-500 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-green-600 transition-all duration-200 text-2xl"
+                        >
+                            +
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        // --- Rendering the App ---
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+
+    </script>
+
+</body>
+</html>
